@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AX 리더십 과정 | 롯데GRS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #E31837;
+            --primary-dark: #B01229;
+            --secondary: #1a1a2e;
+            --bg-light: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 8px 30px rgba(227,24,55,0.2);
+        }
+
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', Apple SD Gothic Neo, sans-serif;
+            background: #f0f2f5;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(227,24,55,0.15) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .header-top {
+            background: rgba(255,255,255,0.05);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { font-size: 18px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+        .logo span { color: white; }
+
+        .header-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .header-content {
+            padding: 60px 40px 70px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-tag {
+            display: inline-block;
+            background: rgba(227,24,55,0.2);
+            border: 1px solid rgba(227,24,55,0.5);
+            color: #ff6b6b;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        header h1 .highlight { color: var(--primary); }
+
+        header p.subtitle {
+            font-size: 17px;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 28px; font-weight: 800; color: var(--primary); }
+        .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+        /* NAV */
+        nav {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 28px;
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(227,24,55,0.03);
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px 80px;
+        }
+
+        section { margin-bottom: 70px; }
+
+        .section-header { text-align: center; margin-bottom: 40px; }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(227,24,55,0.08);
+            color: var(--primary);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-title { font-size: 28px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+        .section-desc { color: var(--text-gray); font-size: 15px; }
+
+        /* NOTICE BANNER */
+        .notice-banner {
+            background: linear-gradient(135deg, #fff3f5, #fff);
+            border: 1px solid rgba(227,24,55,0.2);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .notice-icon { font-size: 28px; flex-shrink: 0; }
+        .notice-text strong { color: var(--primary); font-size: 15px; display: block; margin-bottom: 4px; }
+        .notice-text span { color: var(--text-gray); font-size: 14px; }
+
+        /* SCHEDULE */
+        #schedule { scroll-margin-top: 80px; }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .schedule-card-header {
+            background: linear-gradient(135deg, var(--secondary), #0f3460);
+            color: white;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .schedule-card-header.red {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .schedule-date { font-size: 22px; font-weight: 800; }
+        .schedule-day { font-size: 13px; opacity: 0.8; margin-top: 2px; }
+
+        .schedule-status {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .schedule-card-body { padding: 20px 24px; }
+
+        .schedule-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .schedule-info-row:last-child { border-bottom: none; }
+
+        .info-icon { font-size: 18px; width: 24px; flex-shrink: 0; margin-top: 1px; }
+
+        .info-label {
+            font-size: 11px;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .info-value { font-size: 14px; color: var(--text-dark); font-weight: 600; }
+
+        /* ANNOUNCEMENT */
+        #announcement { scroll-margin-top: 80px; }
+
+        .announce-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .announce-item {
+            background: white;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .announce-item:hover { transform: translateY(-3px); }
+        .announce-item-icon { font-size: 32px; margin-bottom: 12px; }
+        .announce-item h4 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+        .announce-item p { font-size: 14px; color: var(--text-gray); line-height: 1.7; }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+        .tag {
+            background: rgba(227,24,55,0.08);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* LOCATION */
+        #location { scroll-margin-top: 80px; }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .location-info {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .location-info h3 { font-size: 20px; font-weight: 800; margin-bottom: 20px; }
+
+        .location-detail {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .location-detail:last-of-type { border-bottom: none; }
+
+        .loc-icon { font-size: 22px; width: 28px; flex-shrink: 0; }
+
+        .loc-label {
+            font-size: 11px;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .loc-value { font-size: 15px; color: var(--text-dark); font-weight: 600; }
+        .loc-sub { font-size: 13px; color: var(--text-gray); margin-top: 2px; }
+
+        .map-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e8ecf0, #d0d8e0);
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 14px;
+            gap: 10px;
+        }
+
+        .map-placeholder .map-icon { font-size: 48px; }
+
+        .map-btn {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .map-btn:hover { background: var(--primary-dark); }
+
+        /* CURRICULUM */
+        #curriculum { scroll-margin-top: 80px; }
+
+        .curriculum-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .curriculum-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), rgba(227,24,55,0.1));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 14px;
+            padding: 22px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px; top: 24px;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-item.break::before {
+            background: #aaa;
+            box-shadow: 0 0 0 2px #aaa;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-time {
+            background: rgba(227,24,55,0.08);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .timeline-item.break .timeline-time { background: #f0f0f0; color: #888; }
+
+        .timeline-duration {
+            font-size: 12px;
+            color: var(--text-gray);
+            background: #f5f5f5;
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
+        .timeline-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+        .timeline-item.break .timeline-title { color: #888; }
+        .timeline-desc { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+        .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+        .timeline-tag {
+            background: #f0f7ff;
+            color: #0066cc;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .timeline-item.break .timeline-tag { background: #f5f5f5; color: #aaa; }
+
+        /* CONTACT */
+        .contact-section {
+            background: linear-gradient(135deg, var(--secondary), #0f3460);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .contact-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .contact-section p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 15px; }
+
+        .contact-cards { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px 24px;
+            min-width: 180px;
+            transition: background 0.3s;
+        }
+
+        .contact-card:hover { background: rgba(255,255,255,0.18); }
+        .contact-card .c-icon { font-size: 24px; margin-bottom: 8px; }
+        .contact-card .c-label { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .contact-card .c-value { font-size: 15px; font-weight: 700; }
+
+        /* FOOTER */
+        footer {
+            background: var(--secondary);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+        }
+
+        footer strong { color: rgba(255,255,255,0.8); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 { font-size: 28px; }
+            .header-stats { gap: 20px; }
+            .stat-number { font-size: 22px; }
+            .announce-content { grid-template-columns: 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            nav a { padding: 14px 16px; font-size: 13px; }
+            .header-content { padding: 40px 20px 50px; }
+            .contact-section { padding: 30px 20px; }
+            .header-top { padding: 12px 20px; }
+        }
+
+        /* FADE IN */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-top">
+        <div class="logo">LOTTE<span>GRS</span></div>
+        <div class="header-badge">임원 대상 · 필수 교육</div>
+    </div>
+    <div class="header-content">
+        <div class="header-tag">✦ Executive Program 2025 ✦</div>
+        <h1><span class="highlight">AX</span> 리더십 과정</h1>
+        <p class="subtitle">
+            AI 전환 시대, 롯데GRS 임원이 갖춰야 할<br>
+            AX 역량과 리더십 인사이트를 함께 나눕니다.
+        </p>
+        <div class="header-stats">
+            <div class="stat-item">
+                <div class="stat-number">1 Day</div>
+                <div class="stat-label">교육 기간</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6H</div>
+                <div class="stat-label">총 교육 시간</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">전원</div>
+                <div class="stat-label">임원 필수 참석</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">AX</div>
+                <div class="stat-label">핵심 키워드</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#schedule" class="active">
+            <span>📅</span>
+            <span class="nav-label">교육 일정</span>
+        </a>
+        <a href="#announcement">
+            <span>📋</span>
+            <span class="nav-label">교육 안내</span>
+        </a>
+        <a href="#location">
+            <span>📍</span>
+            <span class="nav-label">교육 장소</span>
+        </a>
+        <a href="#curriculum">
+            <span>📚</span>
+            <span class="nav-label">커리큘럼</span>
+        </a>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+    <!-- 공지 배너 -->
+    <div class="notice-banner fade-in">
+        <div class="notice-icon">🔔</div>
+        <div class="notice-text">
+            <strong>필수 참석 안내</strong>
+            <span>본 과정은 롯데GRS 임원 전원 필수 참석 교육입니다. 부득이한 사정이 있을 경우 사전에 교육 담당자에게 반드시 연락 바랍니다.</span>
+        </div>
+    </div>
+
+    <!-- 교육 일정 -->
+    <section id="schedule">
+        <div class="section-header fade-in">
+            <div class="section-tag">📅 Schedule</div>
+            <h2 class="section-title">교육 일정</h2>
+            <p class="section-desc">AX 리더십 과정 교육 일정을 확인하세요.</p>
+        </div>
+
+        <div class="schedule-grid fade-in">
+            <!-- 1회차 -->
+            <div class="schedule-card">
+                <div class="schedule-card-header red">
+                    <div>
+                        <div class="schedule-date">2025년 7월 15일</div>
+                        <div class="schedule-day">화요일 · 1회차</div>
+                    </div>
+                    <div class="schedule-status">예정</div>
+                </div>
+                <div class="schedule-card-body">
+                    <div class="schedule-info-row">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-content">
+                            <div class="info-label">교육 시간</div>
+                            <div class="info-value">09:00 ~ 18:00 (6시간)</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">👥</div>
+                        <div class="info-content">
+                            <div class="info-label">대상</div>
+                            <div class="info-value">롯데GRS 임원 전원</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <div class="info-label">장소</div>
+                            <div class="info-value">롯데월드타워 31층 대회의실</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">👔</div>
+                        <div class="info-content">
+                            <div class="info-label">복장</div>
+                            <div class="info-value">비즈니스 캐주얼</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2회차 -->
+            <div class="schedule-card">
+                <div class="schedule-card-header">
+                    <div>
+                        <div class="schedule-date">2025년 7월 22일</div>
+                        <div class="schedule-day">화요일 · 2회차</div>
+                    </div>
+                    <div class="schedule-status">예정</div>
+                </div>
+                <div class="schedule-card-body">
+                    <div class="schedule-info-row">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-content">
+                            <div class="info-label">교육 시간</div>
+                            <div class="info-value">09:00 ~ 18:00 (6시간)</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">👥</div>
+                        <div class="info-content">
+                            <div class="info-label">대상</div>
+                            <div class="info-value">롯데GRS 임원 전원</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <div class="info-label">장소</div>
+                            <div class="info-value">롯데월드타워 31층 대회의실</div>
+                        </div>
+                    </div>
+                    <div class="schedule-info-row">
+                        <div class="info-icon">👔</div>
+                        <div class="info-content">
+                            <div class="info-label">복장</div>
+                            <div class="info-value">비즈니스 캐주얼</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 교육 안내 -->
+    <section id="announcement">
+        <div class="section-header fade-in">
+            <div class="section-tag">📋 Announcement</div>
+            <h2 class="section-title">교육 안내문</h2>
+            <p class="section-desc">교육 참석 전 반드시 확인해 주세요.</p>
+        </div>
+
+        <div class="announce-content fade-in">
+            <div class="announce-item">
+                <div class="announce-item-icon">🎯</div>
+                <h4>교육 목적</h4>
+                <p>AI 전환(AX) 시대에 롯데GRS 임원으로서 갖춰야 할 AX 이해도를 높이고, 실질적인 AI 활용 역량을 강화합니다. 아이맴버 시연 및 실습을 통해 현장 적용 가능한 인사이트를 제공합니다.</p>
+                <div class="tag-list">
+                    <span class="tag">AX 이해</span>
+                    <span class="tag">AI 활용</span>
+                    <span class="tag">리더십</span>
+                </div>
+            </div>
+
+            <div class="announce-item">
+                <div class="announce-item-icon">👥</div>
+                <h4>교육 대상</h4>
+                <p>롯데GRS 임원 전원을 대상으로 하며, 필수 참석 교육입니다. 부득이한 사유로 불참 시 사전에 반드시 교육 담당자에게 연락하여 주시기 바랍니다.</p>
+                <div class="tag-list">
+                    <span class="tag">임원 전원</span>
+                    <span class="tag">필수 참석</span>
+                </div>
+            </div>
+
+            <div class="announce-item">
+                <div class="announce-item-icon">📝</div>
+                <h4>준비 사항</h4>
+                <p>개인 노트북 또는 태블릿을 지참하시기 바랍니다. 아이맴버 실습을 위한 사전 계정 발급이 필요하오니 교육 3일 전까지 담당자에게 신청해 주세요.</p>
+                <div class="tag-list">
+                    <span class="tag">노트북 지참</span>
+                    <span class="tag">계정 사전 신청</span>
+                </div>
+            </div>
+
+            <div class="announce-item">
+                <div class="announce-item-icon">⚠️</div>
+                <h4>유의 사항</h4>
+                <p>교육 시작 10분 전까지 입실 완료 바랍니다. 교육 중 외부 일정은 자제해 주시고, 실습 시간에는 적극적인 참여를 부탁드립니다. 교육 내용의 외부 유출을 금합니다.</p>
+                <div class="tag-list">
+                    <span class="tag">사전 입실</span>
+                    <span class="tag">보안 준수</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 교육 장소 -->
+    <section id="location">
+        <div class="section-header fade-in">
+            <div class="section-tag">📍 Location</div>
+            <h2 class="section-title">교육 장소 안내</h2>
+            <p class="section-desc">교육 장소 및 오시는 길을 확인하세요.</p>
+        </div>
+
+        <div class="location-grid fade-in">
+            <div class="location-info">
+                <h3>🏢 롯데월드타워</h3>
+
+                <div class="location-detail">
+                    <div class="loc-icon">🏛️</div>
+                    <div class="loc-content">
+                        <div class="loc-label">장소</div>
+                        <div class="loc-value">롯데월드타워 31층 대회의실</div>
+                        <div class="loc-sub">서울특별시 송파구 올림픽로 300</div>
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div class="loc-icon">🚇</div>
+                    <div class="loc-content">
+                        <div class="loc-label">지하철</div>
+                        <div class="loc-value">2호선 · 8호선 잠실역 1번 출구</div>
+                        <div class="loc-sub">도보 5분 이내</div>
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div class="loc-icon">🚌</div>
+                    <div class="loc-content">
+                        <div class="loc-label">버스</div>
+                        <div class="loc-value">잠실역 정류장 하차</div>
+                        <div class="loc-sub">간선 301, 303, 320 / 지선 3313, 3315</div>
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div class="loc-icon">🚗</div>
+                    <div class="loc-content">
+                        <div class="loc-label">자가용</div>
+                        <div class="loc-value">롯데월드타워 지하주차장 이용</div>
+                        <div class="loc-sub">교육 당일 주차 지원 (담당자 확인)</div>
+                    </div>
+                </div>
+
+                <div class="location-detail">
+                    <div class="loc-icon">🛗</div>
+                    <div class="loc-content">
+                        <div class="loc-label">입장 안내</div>
+                        <div class="loc-value">로비 안내 데스크 방문 후 출입증 수령</div>
+                        <div class="loc-sub">사원증 또는 신분증 지참 필수</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-icon">🗺️</div>
+                    <div><strong>롯데월드타워</strong></div>
+                    <div>서울특별시 송파구 올림픽로 300</div>
+                    <div style="font-size:12px; color:#aaa; margin-top:4px;">지도 이미지 또는 카카오맵 iframe 삽입 가능</div>
+                </div>
+                <a href="https://map.kakao.com/?q=롯데월드타워" target="_blank" class="map-btn">
+                    🗺️ 카카오맵으로 길찾기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 커리큘럼 -->
+    <section id="curriculum">
+        <div class="section-header fade-in">
+            <div class="section-tag">📚 Curriculum</div>
+            <h2 class="section-title">교육 커리큘럼</h2>
+            <p class="section-desc">AX 리더십 과정의 세부 교육 내용을 확인하세요.</p>
+        </div>
+
+        <div class="curriculum-timeline fade-in">
+
+            <!-- 1교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">09:00 ~ 09:30</span>
+                    <span class="timeline-duration">30분 · 오리엔테이션</span>
+                </div>
+                <div class="timeline-title">📌 과정 소개 및 오리엔테이션</div>
+                <div class="timeline-desc">교육 목적 및 일정 안내, 강사 소개, 참석자 네트워킹</div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">오리엔테이션</span>
+                    <span class="timeline-tag">일정 안내</span>
+                </div>
+            </div>
+
+            <!-- 2교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">09:30 ~ 11:00</span>
+                    <span class="timeline-duration">90분 · 강의</span>
+                </div>
+                <div class="timeline-title">🤖 AX(AI Transformation) 이해</div>
+                <div class="timeline-desc">
+                    AI 전환(AX)의 개념과 글로벌 트렌드, 국내외 기업 AX 사례 분석,
+                    롯데GRS의 AX 전략 방향 및 비전 공유, 임원이 알아야 할 AI 핵심 개념 정리
+                </div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">AX 개념</span>
+                    <span class="timeline-tag">글로벌 트렌드</span>
+                    <span class="timeline-tag">사례 분석</span>
+                    <span class="timeline-tag">전략 방향</span>
+                </div>
+            </div>
+
+            <!-- 휴식 -->
+            <div class="timeline-item break">
+                <div class="timeline-header">
+                    <span class="timeline-time">11:00 ~ 11:10</span>
+                    <span class="timeline-duration">10분</span>
+                </div>
+                <div class="timeline-title">☕ 휴식</div>
+                <div class="timeline-desc">잠시 휴식 시간입니다.</div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Break</span>
+                </div>
+            </div>
+
+            <!-- 3교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">11:10 ~ 12:30</span>
+                    <span class="timeline-duration">80분 · 강의 + 토론</span>
+                </div>
+                <div class="timeline-title">🏢 AX 리더십과 조직 변화 관리</div>
+                <div class="timeline-desc">
+                    AX 시대 리더의 역할과 책임, 조직 내 AI 도입 시 변화 관리 전략,
+                    임직원 AI 리터러시 향상 방안, 그룹 토론: 우리 조직의 AX 과제
+                </div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">리더십</span>
+                    <span class="timeline-tag">변화 관리</span>
+                    <span class="timeline-tag">AI 리터러시</span>
+                    <span class="timeline-tag">그룹 토론</span>
+                </div>
+            </div>
+
+            <!-- 점심 -->
+            <div class="timeline-item break">
+                <div class="timeline-header">
+                    <span class="timeline-time">12:30 ~ 13:30</span>
+                    <span class="timeline-duration">60분</span>
+                </div>
+                <div class="timeline-title">🍽️ 점심 식사</div>
+                <div class="timeline-desc">중식 제공 (31층 식당 이용)</div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Lunch</span>
+                </div>
+            </div>
+
+            <!-- 4교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">13:30 ~ 15:00</span>
+                    <span class="timeline-duration">90분 · 시연</span>
+                </div>
+                <div class="timeline-title">💡 아이맴버(iMember) 시연</div>
+                <div class="timeline-desc">
+                    아이맴버 플랫폼 주요 기능 소개 및 데모 시연,
+                    AI 기반 업무 자동화 기능 시연, 데이터 분석 및 인사이트 도출 사례,
+                    Q&A 및 질의응답
+                </div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">아이맴버</span>
+                    <span class="timeline-tag">플랫폼 시연</span>
+                    <span class="timeline-tag">업무 자동화</span>
+                    <span class="timeline-tag">Q&A</span>
+                </div>
+            </div>
+
+            <!-- 휴식 -->
+            <div class="timeline-item break">
+                <div class="timeline-header">
+                    <span class="timeline-time">15:00 ~ 15:10</span>
+                    <span class="timeline-duration">10분</span>
+                </div>
+                <div class="timeline-title">☕ 휴식</div>
+                <div class="timeline-desc">잠시 휴식 시간입니다.</div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">Break</span>
+                </div>
+            </div>
+
+            <!-- 5교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">15:10 ~ 17:00</span>
+                    <span class="timeline-duration">110분 · 실습</span>
+                </div>
+                <div class="timeline-title">🖥️ 아이맴버(iMember) 실습</div>
+                <div class="timeline-desc">
+                    개인별 아이맴버 계정 접속 및 기본 기능 실습,
+                    실제 업무 시나리오 기반 AI 활용 실습,
+                    팀별 미션 수행 및 결과 공유, 강사 피드백 및 활용 팁 제공
+                </div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">핸즈온 실습</span>
+                    <span class="timeline-tag">시나리오 실습</span>
+                    <span class="timeline-tag">팀 미션</span>
+                    <span class="timeline-tag">피드백</span>
+                </div>
+            </div>
+
+            <!-- 6교시 -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <span class="timeline-time">17:00 ~ 18:00</span>
+                    <span class="timeline-duration">60분 · 마무리</span>
+                </div>
+                <div class="timeline-title">🎯 종합 토론 및 액션 플랜 수립</div>
+                <div class="timeline-desc">
+                    교육 내용 종합 정리 및 핵심 메시지 공유,
+                    부서별 AX 추진 액션 플랜 작성,
+                    임원 간 AX 실행 의지 공유 및 상호 격려,
+                    수료증 수여 및 기념 촬영
+                </div>
+                <div class="timeline-tags">
+                    <span class="timeline-tag">액션 플랜</span>
+                    <span class="timeline-tag">종합 토론</span>
+                    <span class="timeline-tag">수료증 수여</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 문의처 -->
+    <div class="contact-section fade-in">
+        <h3>📞 교육 문의</h3>
+        <p>교육 관련 문의 사항은 아래 담당자에게 연락해 주세요.</p>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="c-icon">👤</div>
+                <div class="c-label">담당자</div>
+                <div class="c-value">인재개발팀 홍길동 대리</div>
+            </div>
+            <div class="contact-card">
+                <div class="c-icon">📞</div>
+                <div class="c-label">연락처</div>
+                <div class="c-value">02-1234-5678</div>
+            </div>
+            <div class="contact-card">
+                <div class="c-icon">✉️</div>
+                <div class="c-label">이메일</div>
+                <div class="c-value">ax.edu@lottegrs.com</div>
+            </div>
+            <div class="contact-card">
+                <div class="c-icon">⏰</div>
+                <div class="c-label">문의 가능 시간</div>
+                <div class="c-value">평일 09:00 ~ 18:00</div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <strong>롯데GRS 인재개발팀</strong> · AX 리더십 과정 · 2025<br>
+    <span style="font-size:12px; margin-top:6px; display:block;">본 교육 안내문의 내용은 사전 공지 없이 변경될 수 있습니다.</span>
+</footer>
+
+<script>
+    // 스크롤 페이드인 애니메이션
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // 네비게이션 활성화
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 부드러운 스크롤
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+     
