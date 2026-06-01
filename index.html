@@ -7,30 +7,38 @@
 
   <style>
     :root {
-      --primary: #E60012;
-      --primary-dark: #B8000E;
-      --navy: #101828;
-      --gray-900: #1D2939;
+      --primary: #e60012;
+      --primary-dark: #b8000e;
+      --primary-soft: #fff1f2;
+
+      --navy: #111827;
+      --dark: #1f2937;
+      --gray-900: #101828;
       --gray-700: #344054;
       --gray-600: #475467;
       --gray-500: #667085;
-      --gray-300: #D0D5DD;
-      --gray-200: #EAECF0;
-      --gray-100: #F2F4F7;
-      --gray-50: #F9FAFB;
-      --white: #FFFFFF;
-      --blue: #175CD3;
-      --blue-light: #EFF8FF;
-      --green: #027A48;
-      --green-light: #ECFDF3;
-      --purple: #6941C6;
-      --purple-light: #F4F3FF;
-      --shadow-sm: 0 4px 14px rgba(16, 24, 40, 0.08);
-      --shadow-md: 0 12px 30px rgba(16, 24, 40, 0.12);
-      --radius-lg: 24px;
+      --gray-300: #d0d5dd;
+      --gray-200: #eaecf0;
+      --gray-100: #f2f4f7;
+      --gray-50: #f9fafb;
+
+      --blue: #175cd3;
+      --blue-soft: #eff8ff;
+      --green: #027a48;
+      --green-soft: #ecfdf3;
+      --orange: #b54708;
+      --orange-soft: #fffaeb;
+
+      --white: #ffffff;
+      --max-width: 1180px;
+
+      --radius-xl: 28px;
+      --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 10px;
-      --max-width: 1180px;
+
+      --shadow-sm: 0 6px 18px rgba(16, 24, 40, 0.08);
+      --shadow-md: 0 18px 42px rgba(16, 24, 40, 0.12);
     }
 
     * {
@@ -44,17 +52,29 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        "Malgun Gothic",
+        sans-serif;
       color: var(--gray-900);
       background: var(--gray-50);
       line-height: 1.6;
       word-break: keep-all;
+      letter-spacing: -0.02em;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
     }
 
     .page {
@@ -66,16 +86,16 @@
     .header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.86);
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(234, 236, 240, 0.9);
     }
 
     .header-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 18px 24px;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -86,52 +106,52 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
+      font-size: 17px;
+      font-weight: 900;
       color: var(--navy);
-      letter-spacing: -0.03em;
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #FF6B6B);
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      background: linear-gradient(135deg, var(--primary), #ff6b6b);
       color: var(--white);
       font-size: 15px;
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(230, 0, 18, 0.25);
+      box-shadow: 0 10px 20px rgba(230, 0, 18, 0.24);
     }
 
     .nav {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 15px;
-      font-weight: 600;
       color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .nav a {
       padding: 9px 13px;
       border-radius: 999px;
-      transition: all 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .nav a:hover {
       color: var(--primary);
-      background: #FFF1F2;
+      background: var(--primary-soft);
     }
 
-    .nav .cta {
+    .nav .nav-cta {
       color: var(--white);
       background: var(--primary);
-      box-shadow: 0 8px 18px rgba(230, 0, 18, 0.2);
+      box-shadow: 0 8px 18px rgba(230, 0, 18, 0.22);
     }
 
-    .nav .cta:hover {
+    .nav .nav-cta:hover {
       color: var(--white);
       background: var(--primary-dark);
     }
@@ -140,48 +160,49 @@
     .hero {
       position: relative;
       background:
-        radial-gradient(circle at 10% 15%, rgba(230, 0, 18, 0.12), transparent 32%),
-        radial-gradient(circle at 90% 5%, rgba(23, 92, 211, 0.14), transparent 34%),
-        linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 45%, #FFF5F5 100%);
+        radial-gradient(circle at 8% 14%, rgba(230, 0, 18, 0.13), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(23, 92, 211, 0.13), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, #f9fafb 48%, #fff5f5 100%);
       border-bottom: 1px solid var(--gray-200);
+      overflow: hidden;
     }
 
     .hero::after {
-      content: "";
+      content: "AX";
       position: absolute;
-      inset: auto -20% -45% auto;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: rgba(230, 0, 18, 0.08);
-      filter: blur(10px);
+      right: -40px;
+      bottom: -110px;
+      font-size: 300px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(230, 0, 18, 0.045);
+      letter-spacing: -0.09em;
       pointer-events: none;
     }
 
     .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 82px 24px 74px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 56px;
-      align-items: center;
       position: relative;
       z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 82px 24px 76px;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: center;
+      gap: 56px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: #FFF1F2;
+      background: var(--primary-soft);
       color: var(--primary);
       font-size: 14px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-weight: 900;
     }
 
     .eyebrow-dot {
@@ -193,12 +214,12 @@
     }
 
     .hero-title {
-      font-size: clamp(42px, 6vw, 76px);
-      line-height: 1.04;
-      letter-spacing: -0.07em;
-      color: var(--navy);
-      font-weight: 900;
       margin-bottom: 24px;
+      color: var(--navy);
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.075em;
     }
 
     .hero-title span {
@@ -206,36 +227,35 @@
     }
 
     .hero-desc {
-      max-width: 680px;
+      max-width: 700px;
+      margin-bottom: 34px;
       color: var(--gray-600);
       font-size: 19px;
-      letter-spacing: -0.02em;
-      margin-bottom: 34px;
+      line-height: 1.7;
     }
 
     .hero-desc strong {
       color: var(--gray-900);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 0 20px;
+      min-height: 50px;
+      padding: 0 22px;
       border-radius: 999px;
       font-size: 15px;
-      font-weight: 800;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-weight: 900;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
@@ -245,12 +265,12 @@
     .btn-primary {
       color: var(--white);
       background: var(--primary);
-      box-shadow: 0 12px 24px rgba(230, 0, 18, 0.24);
+      box-shadow: 0 12px 24px rgba(230, 0, 18, 0.25);
     }
 
     .btn-primary:hover {
       background: var(--primary-dark);
-      box-shadow: 0 16px 30px rgba(230, 0, 18, 0.28);
+      box-shadow: 0 16px 28px rgba(230, 0, 18, 0.3);
     }
 
     .btn-secondary {
@@ -273,52 +293,52 @@
       border: 1px solid var(--gray-200);
       color: var(--gray-600);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .hero-card {
-      background: rgba(255, 255, 255, 0.9);
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(234, 236, 240, 0.95);
       box-shadow: var(--shadow-md);
-      border-radius: var(--radius-lg);
-      padding: 28px;
     }
 
-    .hero-card-header {
+    .hero-card-head {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .hero-card-title {
-      font-size: 22px;
-      line-height: 1.25;
-      letter-spacing: -0.04em;
+    .hero-card h2 {
       color: var(--navy);
+      font-size: 24px;
+      line-height: 1.25;
       font-weight: 900;
+      letter-spacing: -0.055em;
     }
 
-    .status-badge {
+    .status {
       flex: 0 0 auto;
       padding: 7px 11px;
       border-radius: 999px;
-      background: var(--green-light);
+      background: var(--green-soft);
       color: var(--green);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .info-list {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .info-item {
       display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 14px;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
       padding: 14px;
       border-radius: var(--radius-md);
       background: var(--gray-50);
@@ -327,38 +347,37 @@
 
     .info-label {
       color: var(--gray-500);
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 900;
     }
 
     .info-value {
       color: var(--gray-900);
       font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-weight: 800;
     }
 
-    .hero-metric {
-      margin-top: 18px;
-      padding: 18px;
+    .notice-box {
+      margin-top: 16px;
+      padding: 16px;
       border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--navy), #23314D);
+      background: linear-gradient(135deg, var(--navy), #26364f);
       color: var(--white);
     }
 
-    .hero-metric p {
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 4px;
+    .notice-box small {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, 0.68);
+      font-weight: 800;
     }
 
-    .hero-metric strong {
-      font-size: 24px;
-      letter-spacing: -0.04em;
+    .notice-box strong {
+      font-size: 18px;
+      font-weight: 900;
     }
 
-    /* Common Layout */
+    /* Section Common */
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -366,32 +385,32 @@
     }
 
     .section-header {
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
     .section-kicker {
+      margin-bottom: 10px;
       color: var(--primary);
       font-size: 14px;
       font-weight: 900;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
     }
 
     .section-title {
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.18;
-      letter-spacing: -0.06em;
-      color: var(--navy);
-      font-weight: 900;
       margin-bottom: 14px;
+      color: var(--navy);
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.065em;
     }
 
     .section-desc {
-      max-width: 760px;
+      max-width: 780px;
       color: var(--gray-600);
       font-size: 17px;
-      letter-spacing: -0.02em;
+      line-height: 1.75;
     }
 
     /* Overview */
@@ -402,13 +421,13 @@
     }
 
     .overview-card {
+      min-height: 230px;
+      padding: 28px;
+      border-radius: var(--radius-lg);
       background: var(--white);
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      padding: 26px;
       box-shadow: var(--shadow-sm);
-      min-height: 220px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .overview-card:hover {
@@ -417,42 +436,43 @@
     }
 
     .icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 14px;
-      font-size: 22px;
-      margin-bottom: 18px;
+      border-radius: 15px;
+      font-size: 23px;
     }
 
     .icon.red {
-      background: #FFF1F2;
+      background: var(--primary-soft);
       color: var(--primary);
     }
 
     .icon.blue {
-      background: var(--blue-light);
+      background: var(--blue-soft);
       color: var(--blue);
     }
 
-    .icon.purple {
-      background: var(--purple-light);
-      color: var(--purple);
+    .icon.green {
+      background: var(--green-soft);
+      color: var(--green);
     }
 
     .overview-card h3 {
+      margin-bottom: 10px;
       color: var(--navy);
       font-size: 21px;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: -0.045em;
     }
 
     .overview-card p {
       color: var(--gray-600);
       font-size: 15px;
-      letter-spacing: -0.02em;
+      line-height: 1.7;
     }
 
     /* Program */
@@ -464,51 +484,52 @@
 
     .program-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 26px;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
       align-items: stretch;
     }
 
     .program-highlight {
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(135deg, rgba(230, 0, 18, 0.92), rgba(178, 0, 14, 0.94)),
-        url("data:image/svg+xml,%3Csvg width='500' height='500' viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.18)' stroke-width='1'%3E%3Cpath d='M0 80H500M0 160H500M0 240H500M0 320H500M0 400H500M80 0V500M160 0V500M240 0V500M320 0V500M400 0V500'/%3E%3C/g%3E%3C/svg%3E");
-      color: var(--white);
-      padding: 34px;
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(230, 0, 18, 0.95), rgba(165, 0, 13, 0.96)),
+        url("data:image/svg+xml,%3Csvg width='420' height='420' viewBox='0 0 420 420' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.18)' stroke-width='1'%3E%3Cpath d='M0 70H420M0 140H420M0 210H420M0 280H420M0 350H420M70 0V420M140 0V420M210 0V420M280 0V420M350 0V420'/%3E%3C/g%3E%3C/svg%3E");
+      box-shadow: var(--shadow-md);
     }
 
     .program-highlight::after {
-      content: "AX";
+      content: "DO";
       position: absolute;
-      right: -14px;
-      bottom: -50px;
-      font-size: 170px;
+      right: -12px;
+      bottom: -52px;
+      color: rgba(255, 255, 255, 0.12);
+      font-size: 160px;
       line-height: 1;
       font-weight: 900;
-      letter-spacing: -0.08em;
-      color: rgba(255, 255, 255, 0.1);
+      letter-spacing: -0.09em;
     }
 
     .program-highlight h3 {
       position: relative;
       z-index: 1;
-      font-size: 30px;
-      line-height: 1.2;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      font-size: 31px;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.06em;
     }
 
     .program-highlight p {
       position: relative;
       z-index: 1;
+      margin-bottom: 28px;
       color: rgba(255, 255, 255, 0.82);
       font-size: 16px;
-      letter-spacing: -0.02em;
-      margin-bottom: 30px;
+      line-height: 1.75;
     }
 
     .program-points {
@@ -521,17 +542,12 @@
     .program-point {
       display: flex;
       gap: 10px;
-      align-items: flex-start;
-      padding: 13px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.12);
+      padding: 13px 14px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.13);
       border: 1px solid rgba(255, 255, 255, 0.18);
       font-size: 15px;
-      font-weight: 700;
-    }
-
-    .program-point span {
-      flex: 0 0 auto;
+      font-weight: 800;
     }
 
     .feature-grid {
@@ -549,47 +565,52 @@
 
     .feature-card small {
       display: inline-flex;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       color: var(--primary);
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: -0.02em;
     }
 
     .feature-card h4 {
+      margin-bottom: 8px;
       color: var(--navy);
       font-size: 20px;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
+      font-weight: 900;
+      letter-spacing: -0.045em;
     }
 
     .feature-card p {
       color: var(--gray-600);
       font-size: 15px;
-      letter-spacing: -0.02em;
+      line-height: 1.7;
     }
 
     /* Curriculum */
     .curriculum-wrap {
+      overflow: hidden;
+      border-radius: var(--radius-xl);
       background: var(--white);
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
       box-shadow: var(--shadow-sm);
-      overflow: hidden;
     }
 
     .curriculum-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 18px;
-      padding: 24px 28px;
-      background: linear-gradient(135deg, var(--navy), #202B44);
+      padding: 26px 30px;
       color: var(--white);
+      background:
+        radial-gradient(circle at 85% 20%, rgba(230, 0, 18, 0.35), transparent 32%),
+        linear-gradient(135deg, var(--navy), #23314d);
     }
 
     .curriculum-top h3 {
-      font-size: 24px;
-      letter-spacing: -0.04em;
+      margin-bottom: 5px;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
     }
 
     .curriculum-top p {
@@ -600,12 +621,12 @@
 
     .curriculum-badge {
       flex: 0 0 auto;
-      padding: 8px 12px;
+      padding: 9px 13px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.18);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .timeline {
@@ -616,9 +637,9 @@
       display: grid;
       grid-template-columns: 150px 1fr 250px;
       gap: 20px;
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--gray-200);
       align-items: start;
+      padding: 24px 30px;
+      border-bottom: 1px solid var(--gray-200);
     }
 
     .timeline-item:last-child {
@@ -629,35 +650,35 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 118px;
-      padding: 8px 10px;
+      width: fit-content;
+      min-width: 120px;
+      padding: 8px 11px;
       border-radius: 999px;
       background: var(--gray-100);
       color: var(--gray-700);
       font-size: 14px;
       font-weight: 900;
-      letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
     .session h4 {
+      margin-bottom: 9px;
       color: var(--navy);
       font-size: 20px;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
     }
 
     .session ul {
-      list-style: none;
       display: grid;
       gap: 6px;
       color: var(--gray-600);
       font-size: 15px;
-      letter-spacing: -0.02em;
     }
 
     .session li {
       position: relative;
-      padding-left: 16px;
+      padding-left: 15px;
     }
 
     .session li::before {
@@ -672,79 +693,121 @@
     }
 
     .speaker {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
       color: var(--gray-700);
       font-size: 14px;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 14px;
     }
 
     .speaker span {
       display: block;
+      margin-bottom: 4px;
       color: var(--gray-500);
       font-size: 12px;
       font-weight: 900;
-      margin-bottom: 4px;
-      text-transform: uppercase;
       letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .break-row {
-      background: #FFFCF5;
+      background: var(--orange-soft);
     }
 
     .break-row .time {
-      background: #FEF0C7;
-      color: #B54708;
+      color: var(--orange);
+      background: #fef0c7;
     }
 
     .break-row .session h4 {
-      color: #B54708;
+      color: var(--orange);
+    }
+
+    .break-row .session p {
+      color: var(--gray-600);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+   4 {
+      color: var(--orange);
+    }
+
+    .break-row .session p {
+      color: var(--gray-600);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .prepare-box {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .prepare-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .prepare-card h4 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .prepare-card p {
+      color: var(--gray-600);
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     /* Closing */
     .closing {
-      padding: 72px 24px 92px;
-      background:
-        radial-gradient(circle at 20% 40%, rgba(230, 0, 18, 0.12), transparent 28%),
-        linear-gradient(135deg, #101828, #1E293B);
-      color: var(--white);
+      padding: 76px 24px 92px;
       text-align: center;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 20% 40%, rgba(230, 0, 18, 0.18), transparent 30%),
+        linear-gradient(135deg, #101828, #1e293b);
     }
 
     .closing-inner {
-      max-width: 900px;
+      max-width: 880px;
       margin: 0 auto;
     }
 
     .closing h2 {
-      font-size: clamp(32px, 5vw, 54px);
-      line-height: 1.15;
-      letter-spacing: -0.06em;
       margin-bottom: 18px;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.065em;
     }
 
     .closing p {
+      margin-bottom: 30px;
       color: rgba(255, 255, 255, 0.74);
       font-size: 17px;
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-    }
-
-    .closing .btn-secondary {
-      color: var(--navy);
+      line-height: 1.75;
     }
 
     .footer {
       padding: 24px;
       text-align: center;
       color: var(--gray-500);
-      font-size: 13px;
       background: var(--white);
       border-top: 1px solid var(--gray-200);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     /* Responsive */
@@ -770,12 +833,15 @@
       .speaker {
         grid-column: 2;
       }
+
+      .prepare-box {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
       .header-inner {
         padding: 14px 18px;
-        align-items: flex-start;
       }
 
       .nav {
@@ -788,8 +854,13 @@
         padding-right: 18px;
       }
 
+      .hero-inner {
+        padding-top: 54px;
+        padding-bottom: 58px;
+      }
+
       .hero-title {
-        font-size: 44px;
+        font-size: 43px;
       }
 
       .hero-desc {
@@ -800,9 +871,18 @@
         padding: 22px;
       }
 
+      .hero-card-head {
+        flex-direction: column;
+      }
+
       .info-item {
         grid-template-columns: 1fr;
         gap: 4px;
+      }
+
+      .section {
+        padding-top: 68px;
+        padding-bottom: 68px;
       }
 
       .feature-grid {
@@ -812,7 +892,7 @@
       .curriculum-top {
         flex-direction: column;
         align-items: flex-start;
-        padding: 22px;
+        padding: 23px;
       }
 
       .timeline-item {
@@ -826,8 +906,7 @@
       }
 
       .time {
-        justify-content: flex-start;
-        width: fit-content;
+        min-width: auto;
       }
     }
 
@@ -847,14 +926,15 @@
         background: #fff;
       }
 
-      .section,
-      .hero-inner {
+      .hero-inner,
+      .section {
         padding: 32px 0;
       }
 
-      .curriculum-wrap,
+      .hero-card,
       .overview-card,
-      .hero-card {
+      .curriculum-wrap,
+      .prepare-card {
         box-shadow: none;
       }
     }
@@ -876,15 +956,14 @@
           <a href="#overview">교육안내</a>
           <a href="#program">과정특징</a>
           <a href="#curriculum">유첨 커리큘럼</a>
-          <a href="#curriculum" class="cta">일정 보기</a>
+          <a href="#curriculum" class="nav-cta">일정 확인</a>
         </nav>
       </div>
     </header>
 
-    <!-- Main: Education Guide -->
     <main id="top">
 
-      <!-- Hero -->
+      <!-- Main / Education Guide -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-inner">
           <div>
@@ -899,8 +978,8 @@
             </h1>
 
             <p class="hero-desc">
-              롯데GRS 임원 대상 <strong>AX 리더십 과정</strong>은
-              AX 이해를 기반으로 조직의 변화 방향성을 설정하고,
+              <strong>AX 리더십 과정</strong>은 롯데GRS 부문장 및 임원을 대상으로,
+              AX 이해를 바탕으로 조직의 변화 방향성을 설정하고
               데이터 기반 의사결정 문화를 정착시키기 위한 실행 중심 교육입니다.
             </p>
 
@@ -918,36 +997,53 @@
           </div>
 
           <aside class="hero-card" aria-label="교육 핵심 정보">
-            <div class="hero-card-header">
-              <h2 class="hero-card-title">교육 핵심 정보</h2>
-              <span class="status-badge">Executive Course</span>
+            <div class="hero-card-head">
+              <h2>AX 리더십 과정<br />교육 안내</h2>
+              <span class="status">Executive Class</span>
             </div>
 
             <div class="info-list">
               <div class="info-item">
-                <div class="info-label">과정명</div>
-                <div class="info-value">AX 리더십 과정</div>
+                <div class="info-label">일정</div>
+                <div class="info-value">
+                  2026년 06월 24일 수요일<br />
+                  오전 09:20 ~ 11:45
+                </div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">일정</div>
-                <div class="info-value">2026년 06월 24일 수요일<br />09:00 ~ 11:20</div>
+                <div class="info-label">착석 안내</div>
+                <div class="info-value">
+                  오전 09시 20분까지 착석 부탁드립니다.
+                </div>
               </div>
 
               <div class="info-item">
                 <div class="info-label">장소</div>
-                <div class="info-value">삼전 사옥 6층 대회의실</div>
+                <div class="info-value">
+                  삼전 사옥 6층 대회의실
+                </div>
               </div>
 
               <div class="info-item">
                 <div class="info-label">대상</div>
-                <div class="info-value">롯데GRS 임원 전원</div>
+                <div class="info-value">
+                  롯데GRS 부문장 및 임원
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-label">준비물</div>
+                <div class="info-value">
+                  개인 업무용 노트북<br />
+                  노트북 충전기 포함
+                </div>
               </div>
             </div>
 
-            <div class="hero-metric">
-              <p>교육 시간</p>
-              <strong>2시간 집중 과정</strong>
+            <div class="notice-box">
+              <small>Program Slogan</small>
+              <strong>‘아는’ AI에서 ‘활용하는’ AI로의 전환</strong>
             </div>
           </aside>
         </div>
@@ -956,12 +1052,13 @@
       <!-- Overview -->
       <section id="overview" class="section" aria-labelledby="overview-title">
         <div class="section-header">
-          <div class="section-kicker">Education Guide</div>
-          <h2 id="overview-title" class="section-title">교육안내</h2>
+          <div class="section-kicker">Main · 교육안내</div>
+          <h2 id="overview-title" class="section-title">
+            AX 이해를 넘어, 리더의 실행 언어로 전환합니다.
+          </h2>
           <p class="section-desc">
-            본 과정은 AX 전환 시대에 임원이 이해해야 할 AI 활용 관점,
-            리더의 역할, AI Agent 트렌드와 실제 업무 적용 방식을
-            짧고 밀도 있게 다룹니다.
+            본 과정은 단순한 AI 트렌드 학습이 아니라, 리더가 조직 내 AX 전환을
+            어떻게 촉진하고 실제 업무 변화로 연결할 것인지에 초점을 둡니다.
           </p>
         </div>
 
@@ -970,104 +1067,110 @@
             <div class="icon red">01</div>
             <h3>AX 방향성 설정</h3>
             <p>
-              산업 내 Value Chain별 AX 사례를 통해 조직의 전환 방향과
-              리더십 과제를 명확히 이해합니다.
+              AX의 개념과 산업 내 변화 흐름을 이해하고,
+              롯데GRS 관점에서 적용 가능한 전환 방향을 탐색합니다.
             </p>
           </article>
 
           <article class="overview-card">
             <div class="icon blue">02</div>
-            <h3>AI Agent 트렌드 이해</h3>
+            <h3>리더 역할 정립</h3>
             <p>
-              AI Agent의 개념과 산업별 특화 AI 적용 사례를 중심으로
-              실질적 혁신 가능성을 확인합니다.
+              일하는 방식의 변화를 이끄는 리더의 역할을 점검하고,
+              조직 내 실행과 확산을 위한 가이드라인을 확인합니다.
             </p>
           </article>
 
           <article class="overview-card">
-            <div class="icon purple">03</div>
-            <h3>실행 중심 활용 교육</h3>
+            <div class="icon green">03</div>
+            <h3>데이터 기반 의사결정</h3>
             <p>
-              Aimember, OnFlow, Open Claw 시연과 One UI 사용법,
-              AI보고서 에이전트, 비전 스튜디오 활용을 경험합니다.
+              AI 도구와 Agent 활용 사례를 통해 데이터 중심의 의사결정 문화를
+              조직에 정착시키는 방안을 학습합니다.
             </p>
           </article>
         </div>
       </section>
 
-      <!-- Program Style -->
+      <!-- Program Feature -->
       <section id="program" class="program" aria-labelledby="program-title">
         <div class="section">
           <div class="section-header">
-            <div class="section-kicker">Action-oriented Program</div>
-            <h2 id="program-title" class="section-title">실행 중심, 프로젝트형 AX 리더십</h2>
+            <div class="section-kicker">Program Feature</div>
+            <h2 id="program-title" class="section-title">
+              실행 중심, 프로젝트형 AX 리더십 경험
+            </h2>
             <p class="section-desc">
-              단순한 AI 지식 전달을 넘어, 리더가 조직의 업무 방식 변화를
-              이끌고 실질적 결과물을 도출할 수 있도록 구성했습니다.
+              이론 중심 교육에서 벗어나 AI 시연, 업무 적용 방식, 후속 AX 부스터 과정까지
+              연결되는 구조로 설계했습니다.
             </p>
           </div>
 
           <div class="program-grid">
             <div class="program-highlight">
               <h3>
-                AX 전환은 기술 도입이 아니라<br />
-                일하는 방식의 재설계입니다.
+                AX를 이해하고,<br />
+                현업 적용 가능성을 확인합니다.
               </h3>
               <p>
-                임원 리더십 관점에서 AI를 어떻게 바라보고,
-                어떤 업무와 의사결정에 적용할 것인지에 초점을 맞춥니다.
+                리더가 먼저 AI 활용 경험을 갖고, 조직 구성원이 실제 업무에서
+                AI를 활용할 수 있도록 방향성과 실행 기준을 제시합니다.
               </p>
 
               <div class="program-points">
                 <div class="program-point">
                   <span>✓</span>
-                  <div>조직 내 AX 추진 방향과 리더 역할 정립</div>
+                  <div>Value Chain별 AX 사례 기반 인사이트 제공</div>
                 </div>
                 <div class="program-point">
                   <span>✓</span>
-                  <div>데이터 기반 의사결정 문화 확산</div>
+                  <div>AI Agent 트렌드 및 산업별 혁신 사례 소개</div>
                 </div>
                 <div class="program-point">
                   <span>✓</span>
-                  <div>AI 도구 시연 기반의 즉시 활용 경험 제공</div>
+                  <div>Aimember, OnFlow, Open Claw 등 주요 도구 시연</div>
+                </div>
+                <div class="program-point">
+                  <span>✓</span>
+                  <div>AX 부스터 과정과 연계한 결과물 도출 방향 안내</div>
                 </div>
               </div>
             </div>
 
             <div class="feature-grid">
               <article class="feature-card">
-                <small>Module 1</small>
-                <h4>AX Leadership</h4>
+                <small>Leadership</small>
+                <h4>변화 촉진자로서의 리더</h4>
                 <p>
-                  일하는 방식의 변화를 이끄는 리더의 역할과
-                  AX 전환 가이드라인을 학습합니다.
+                  리더가 AX 전환의 필요성을 이해하고, 업무 방식 변화의 기준을
+                  제시할 수 있도록 구성했습니다.
                 </p>
               </article>
 
               <article class="feature-card">
-                <small>Module 2</small>
-                <h4>AI Agent Trend</h4>
+                <small>Use Case</small>
+                <h4>산업별 AI 활용 사례</h4>
                 <p>
-                  AI Agent의 흐름과 산업별 혁신 사례를 통해
-                  업무 적용 가능성을 파악합니다.
+                  산업과 Value Chain 관점의 AX 사례를 통해 현업 적용 가능성을
+                  구체적으로 살펴봅니다.
                 </p>
               </article>
 
               <article class="feature-card">
-                <small>Module 3</small>
-                <h4>AI Demonstration</h4>
+                <small>Hands-on Demo</small>
+                <h4>AI 도구 시연 및 활용 교육</h4>
                 <p>
-                  Aimember, OnFlow, Open Claw 등 실제 솔루션 시연을 통해
-                  활용 방식을 확인합니다.
+                  One UI 사용방법, AI보고서 에이전트, 비전 스튜디오 등
+                  실무 활용 장면을 직접 확인합니다.
                 </p>
               </article>
 
               <article class="feature-card">
-                <small>Module 4</small>
-                <h4>AX Booster</h4>
+                <small>Booster</small>
+                <h4>후속 실행 과정 연계</h4>
                 <p>
-                  후속 AX 부스터 과정을 소개하고
-                  AI 결과물 도출 과정을 시연합니다.
+                  AX 부스터 과정을 통해 단발성 교육이 아닌 실제 AI 결과물 도출로
+                  이어질 수 있도록 안내합니다.
                 </p>
               </article>
             </div>
@@ -1075,47 +1178,55 @@
         </div>
       </section>
 
-      <!-- Appendix Curriculum -->
+      <!-- Curriculum -->
       <section id="curriculum" class="section" aria-labelledby="curriculum-title">
         <div class="section-header">
-          <div class="section-kicker">Appendix</div>
-          <h2 id="curriculum-title" class="section-title">유첨 커리큘럼</h2>
+          <div class="section-kicker">Attachment · 유첨 커리큘럼</div>
+          <h2 id="curriculum-title" class="section-title">
+            세부 교육 일정
+          </h2>
           <p class="section-desc">
-            2026년 06월 24일 수요일, 오전 09:00부터 11:20까지 진행되는
-            AX 리더십 과정 세부 일정입니다.
+            교육은 2026년 06월 24일 수요일 오전 09시 25분 인사말을 시작으로
+            11시 45분까지 진행됩니다. 참석자는 오전 09시 20분까지 착석 부탁드립니다.
           </p>
         </div>
 
         <div class="curriculum-wrap">
           <div class="curriculum-top">
             <div>
-              <h3>AX 리더십 과정 세부 커리큘럼</h3>
-              <p>대상: 롯데GRS 임원 전원 · 장소: 삼전 사옥 6층 대회의실</p>
+              <h3>AX 리더십 과정 커리큘럼</h3>
+              <p>2026.06.24 수요일 · 삼전 사옥 6층 대회의실</p>
             </div>
-            <div class="curriculum-badge">09:00 ~ 11:20</div>
+            <div class="curriculum-badge">
+              09:20 착석 · 09:25 시작
+            </div>
           </div>
 
           <div class="timeline">
             <article class="timeline-item">
               <div>
-                <span class="time">09:00 ~ 09:00</span>
+                <span class="time">09:25 ~ 09:30</span>
               </div>
+
               <div class="session">
                 <h4>인사말</h4>
                 <ul>
                   <li>임원 대상 AI 교육 진행에 대한 배경 및 취지</li>
                 </ul>
               </div>
+
               <div class="speaker">
-                <span>강의자</span>
-                롯데GRS - 대표이사
+                <span>Lecturer</span>
+                롯데GRS<br />
+                대표이사
               </div>
             </article>
 
             <article class="timeline-item">
               <div>
-                <span class="time">09:00 ~ 09:35</span>
+                <span class="time">09:30 ~ 10:00</span>
               </div>
+
               <div class="session">
                 <h4>AX 전환을 위한 리더의 역할</h4>
                 <ul>
@@ -1124,16 +1235,19 @@
                   <li>AX 전환을 위한 가이드라인</li>
                 </ul>
               </div>
+
               <div class="speaker">
-                <span>강의자</span>
-                롯데이노베이트 - 컨설팅부분 허주영 팀장
+                <span>Lecturer</span>
+                롯데이노베이트<br />
+                컨설팅부분 허주영 팀장
               </div>
             </article>
 
             <article class="timeline-item">
               <div>
-                <span class="time">09:35 ~ 10:00</span>
+                <span class="time">10:00 ~ 10:25</span>
               </div>
+
               <div class="session">
                 <h4>AI Agent 트렌드</h4>
                 <ul>
@@ -1141,51 +1255,57 @@
                   <li>산업별 특화 AI 적용을 통한 혁신 사례</li>
                 </ul>
               </div>
+
               <div class="speaker">
-                <span>강의자</span>
-                롯데이노베이트 - AI혁신센터 전봉지 팀장
+                <span>Lecturer</span>
+                롯데이노베이트<br />
+                AI혁신센터 전봉지 팀장
               </div>
             </article>
 
             <article class="timeline-item break-row">
               <div>
-                <span class="time">10:00 ~ 10:10</span>
+                <span class="time">10:25 ~ 10:35</span>
               </div>
+
               <div class="session">
                 <h4>Break</h4>
-                <ul>
-                  <li>휴식 및 다음 세션 준비</li>
-                </ul>
+                <p>휴식 및 AI 시연 준비</p>
               </div>
+
               <div class="speaker">
-                <span>비고</span>
-                세션 간 전환
+                <span>Notice</span>
+                개인 업무용 노트북 및 충전기 준비
               </div>
             </article>
 
             <article class="timeline-item">
               <div>
-                <span class="time">10:10 ~ 11:10</span>
+                <span class="time">10:35 ~ 11:35</span>
               </div>
+
               <div class="session">
                 <h4>AI 시연 및 아이멤버 활용 교육</h4>
                 <ul>
                   <li>Aimember, OnFlow, Open Claw 시연</li>
                   <li>One UI 사용방법</li>
                   <li>AI보고서 에이전트 활용</li>
-                  <li>비전 스튜디오</li>
+                  <li>비전 스튜디오 활용 교육</li>
                 </ul>
               </div>
+
               <div class="speaker">
-                <span>강의자</span>
-                롯데이노베이트 - AI혁신센터 전봉지 팀장
+                <span>Lecturer</span>
+                롯데이노베이트<br />
+                AI혁신센터 전봉지 팀장
               </div>
             </article>
 
             <article class="timeline-item">
               <div>
-                <span class="time">11:10 ~ 11:20</span>
+                <span class="time">11:35 ~ 11:45</span>
               </div>
+
               <div class="session">
                 <h4>AX 부스터 과정 소개</h4>
                 <ul>
@@ -1193,12 +1313,32 @@
                   <li>AI 결과물 도출 시연</li>
                 </ul>
               </div>
+
               <div class="speaker">
-                <span>강의자</span>
-                롯데GRS - 인재육성팀
+                <span>Lecturer</span>
+                롯데GRS<br />
+                인재육성팀
               </div>
             </article>
           </div>
+        </div>
+
+        <div class="prepare-box">
+          <article class="prepare-card">
+            <h4>참석 안내</h4>
+            <p>
+              원활한 교육 진행을 위해 참석자는 교육 시작 전
+              <strong>오전 09시 20분까지</strong> 삼전 사옥 6층 대회의실에 착석해 주시기 바랍니다.
+            </p>
+          </article>
+
+          <article class="prepare-card">
+            <h4>준비물</h4>
+            <p>
+              AI 시연 및 아이멤버 활용 교육 참여를 위해
+              <strong>개인 업무용 노트북</strong>과 <strong>노트북 충전기</strong>를 지참해 주시기 바랍니다.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -1206,12 +1346,12 @@
       <section class="closing" aria-labelledby="closing-title">
         <div class="closing-inner">
           <h2 id="closing-title">
-            AX를 이해하는 리더에서<br />
-            AX를 실행하는 리더로
+            AX는 이해가 아니라<br />
+            실행으로 완성됩니다.
           </h2>
           <p>
-            본 과정은 AI를 단순히 아는 수준을 넘어,
-            실제 업무와 의사결정에 활용하는 리더십 전환을 목표로 합니다.
+            롯데GRS AX 리더십 과정은 임원진의 AI 이해도를 높이고,
+            조직의 일하는 방식과 데이터 기반 의사결정 문화를 변화시키는 출발점입니다.
           </p>
           <a href="#top" class="btn btn-secondary">상단으로 이동</a>
         </div>
@@ -1219,8 +1359,9 @@
     </main>
 
     <footer class="footer">
-      © 2026 LOTTE GRS AX Leadership Program. All rights reserved.
+      © 2026 LOTTE GRS AX Leadership Program. All Rights Reserved.
     </footer>
+
   </div>
 </body>
 </html>
